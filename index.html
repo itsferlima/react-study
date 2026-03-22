@@ -37,7 +37,7 @@
   </style>
 </head>
 
-<body className="text-(--text) font-(--font-sans)">
+<body class="text-(--text) font-(--font-sans)">
   <div id="root"></div>
 
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
@@ -109,19 +109,47 @@
       )
     }
 
+    function CalculatorDisplay({operation, result}){
+      return (
+        <div className={`
+              flex flex-col gap-2 px-[1.375rem]
+              cursor-default select-none`}>
+
+              <Text as="div" variant="muted" className="flex items-center justify-center">
+                {operation}
+              </Text>
+              <div className={`
+                flex items-center justify-between
+              `}>
+                <Text variant="muted">=</Text>
+              < Text variant="blast">{result}</Text>
+              </div>
+        </div>
+      )
+    }
+
+    function Calculator(){
+      return (
+          <Card className={`
+            flex flex-col 
+            gap-[1.625rem] w-[22.25rem] 
+            pt-14 px-8 pb-8
+          `}>
+            <CalculatorDisplay operation="1+1" result="2" />
+
+            <div className="flex flex-bol gap-3">
+              <div className="flex gap-3">
+                <Button>CE</Button>
+              </div>
+            </div>
+          </Card>
+      )
+    }
+
     function App() {
       return (
-        <main className={`
-           py-28 px-4 sm:px-10
-            flex flex-col sm:flex-row
-            items-center sm:items-stretch
-            gap-2 
-          `}>
-            <Button>CE</Button>
-            <Button>/</Button>
-            <Card>1</Card>
-            <Card>2</Card>
-            <Card>3</Card>
+        <main className="py-28 px-4">
+            <Calculator></Calculator>
         </main>
       )
     }
