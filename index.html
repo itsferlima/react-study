@@ -146,11 +146,11 @@
               flex flex-col gap-2 px-[1.375rem]
               cursor-default select-none`}>
 
-              <Text as="div" variant="muted" className="flex items-center justify-center">
+              <Text as="div" variant="muted" className="flex items-center justify-end h-7">
                 {operation}
               </Text>
               <div className={`
-                flex items-center justify-between
+                flex items-center justify-between h-9
               `}>
                 <Text variant="muted">=</Text>
               < Text variant="blast">{result}</Text>
@@ -170,12 +170,14 @@
 
             <div className="flex flex-col gap-3">
               {buttons.map((row,index) => (
-                <div key={`row-${index}`} lassName="flex gap-3">
+                <div key={`row-${index}`} className="flex gap-3">
                 {row.map(button=> 
                   <Button 
                   key={button.input} 
-                  className="w-16 h-16">
-                  CE
+                  className={button.className || "w-16 h-16"}
+                  variant={button.variant}
+                  >
+                  {button.input}
                   </Button>
                 )}
               </div>)
@@ -211,7 +213,6 @@
           `}>
             <Calculator></Calculator>
             <OperationHistory></OperationHistory>
-            <Calculator></Calculator>
         </main>
       )
     }
