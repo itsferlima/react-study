@@ -97,7 +97,7 @@
       )
     }
 
-    function Card({ children, className, ...props}) {
+    function Card({className, children ...props}) {
       return ( 
         <div className={`
           bg-(--background) shadow-(--shadow)
